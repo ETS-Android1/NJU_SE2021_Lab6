@@ -20,6 +20,7 @@ package dev.dworks.apps.anexplorer.fragment;
 import android.content.ContentProviderClient;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
@@ -32,6 +33,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -80,6 +82,7 @@ public class DetailFragment extends DialogFragment {
 	private View contents_layout;
     private CircleImage iconMimeBackground;
     private View path_layout;
+    private Button button2;
 
     public static void show(FragmentManager fm, DocumentInfo doc) {
 		final Bundle args = new Bundle();
@@ -122,7 +125,11 @@ public class DetailFragment extends DialogFragment {
 			isDialog = args.getBoolean(EXTRA_IS_DIALOG);
 		}
 	}
-	
+
+	public void sendMessage(View view) {
+		// Do something in response to button
+	}
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		final View view = inflater.inflate(R.layout.fragment_detail, container, false);
@@ -142,7 +149,14 @@ public class DetailFragment extends DialogFragment {
         iconMimeBackground = (CircleImage)view.findViewById(R.id.icon_mime_background);
 
 		icon = (FrameLayout)view.findViewById(android.R.id.icon);
-		
+		button2 = (Button) view.findViewById(R.id.button2);
+		button2.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(getActivity(),dev.dworks.apps.anexplorer.setting.SettingsActivity.class);
+				startActivity(intent);
+			}
+		});
 		return view;
 	}
 
