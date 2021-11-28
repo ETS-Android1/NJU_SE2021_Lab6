@@ -86,6 +86,7 @@ import dev.dworks.apps.anexplorer.archive.DocumentArchiveHelper;
 import dev.dworks.apps.anexplorer.cast.CastUtils;
 import dev.dworks.apps.anexplorer.cast.Casty;
 import dev.dworks.apps.anexplorer.common.RootsCommonFragment;
+import dev.dworks.apps.anexplorer.common.SettingsCommonActivity;
 import dev.dworks.apps.anexplorer.fragment.ConnectionsFragment;
 import dev.dworks.apps.anexplorer.fragment.CreateDirectoryFragment;
 import dev.dworks.apps.anexplorer.fragment.CreateFileFragment;
@@ -947,6 +948,19 @@ public class DocumentsActivity extends BaseActivity implements MenuItem.OnMenuIt
         Bundle params = new Bundle();
         params.putString(FILE_TYPE, "folder");
         AnalyticsManager.logEvent("create_folder", params);
+    }
+
+    private void getSetting() {
+
+        //Intent intent = new Intent(getActivity(),dev.dworks.apps.anexplorer.setting.SettingsActivity.class);
+        //startActivity(intent);
+        Intent intent = new Intent(this, SettingsActivity.class);
+
+        startActivity(intent);
+        /*CreateDirectoryFragment.show(getSupportFragmentManager());
+        Bundle params = new Bundle();
+        params.putString(FILE_TYPE, "folder");
+        AnalyticsManager.logEvent("create_folder", params);*/
     }
 
     private void createFile() {
@@ -2023,6 +2037,12 @@ public class DocumentsActivity extends BaseActivity implements MenuItem.OnMenuIt
 
                 case R.id.fab_create_folder:
                     createFolder();
+                    mActionMenu.closeMenu();
+                    break;
+
+                case R.id.fab_menu_setting:
+                    onStateChanged();
+                    getSetting();
                     mActionMenu.closeMenu();
                     break;
 
