@@ -954,6 +954,8 @@ public class DocumentsActivity extends BaseActivity implements MenuItem.OnMenuIt
 
         //Intent intent = new Intent(getActivity(),dev.dworks.apps.anexplorer.setting.SettingsActivity.class);
         //startActivity(intent);
+
+
         Intent intent = new Intent(this, SettingsActivity.class);
 
         startActivity(intent);
